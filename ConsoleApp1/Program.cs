@@ -26,9 +26,9 @@
 
         //Instance.MethodeBloquante(4000);
 
-        Instance.ExoLinq1();
-        
-        Instance.ExoLinq2();
+        //Instance.ExoLinq1();
+        //Instance.ExoLinq2();
+        Instance.ExoLinq3();
 
         Console.WriteLine("");
         Console.WriteLine("Fini. Appuyer sur une touche pour quitter.");

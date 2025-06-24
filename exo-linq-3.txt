@@ -9,7 +9,7 @@ class Note {
 // Poids : Math = 2, autres = 1. Calculez les moyennes pondérées et n'affichez que la plus haute et la plus basse.
 
 var notes = new List<Note> {
-    new() { Student = "Alice", Subject = "Maths", Grade = 18 },
+    new() { Student = "Alice", Subject = "Maths", Grade = 19 },
     new() { Student = "Alice", Subject = "Histoire", Grade = 14 },
     new() { Student = "Bertrand", Subject = "Maths", Grade = 15 },
     new() { Student = "Bertrand", Subject = "Histoire", Grade = 17 },

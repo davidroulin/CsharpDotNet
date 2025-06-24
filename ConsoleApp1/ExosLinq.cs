@@ -110,7 +110,20 @@ partial class Program
             new() { Id = 6, ParentId = 3, Name = "Sub2.1" },
         };
 
-       
+        List<Folder> GetDescendants(List<Folder> all, int parentId)
+        {
+            return all
+                .Where(f => f.ParentId == parentId)
+                .SelectMany(f => new[] { f }.Concat(GetDescendants(all, f.Id)))
+                .ToList();
+        }
+
+        var result = GetDescendants(folders, 1);
+
+        foreach (var item in result)
+        {
+            Console.WriteLine(item);
+        }
 
     }
 
@@ -118,14 +131,51 @@ partial class Program
 
     #region Exo 3
 
+    class Note
+    {
+        public string Student { get; set; }
+        public string Subject { get; set; }
+        public double Grade { get; set; }
+    }
 
 
-    //public void ExoLinqN()
-    //{
+    public void ExoLinq3()
+    {
 
+        var notes = new List<Note> {
+            new() { Student = "Alice", Subject = "Maths", Grade = 19 },
+            new() { Student = "Alice", Subject = "Histoire", Grade = 14 },
+            new() { Student = "Bertrand", Subject = "Maths", Grade = 15 },
+            new() { Student = "Bertrand", Subject = "Histoire", Grade = 17 },
+            new() { Student = "Charles", Subject = "Maths", Grade = 10 },
+            new() { Student = "Charles", Subject = "Histoire", Grade = 19 },
+        };
 
+        var averages = notes
+            .GroupBy(n => n.Student)
+            .Select(g =>
+            {
+                var weightedSum = g.Sum(n => n.Grade * (n.Subject == "Math" ? 2 : 1));
+                var weightTotal = g.Sum(n => n.Subject == "Math" ? 2 : 1);
+                return new
+                {
+                    Student = g.Key,
+                    Average = weightedSum / weightTotal
+                };
+            });
 
-    //}
+        var result = averages
+            .Where(avg =>
+                avg.Average <= averages.Min(a => a.Average) ||  // je prends le min...
+                avg.Average >= averages.Max(a => a.Average)     // ... ainsi que le max
+             );
+
+        foreach (var item in result)
+        {
+            Console.WriteLine(item);
+        }
+
+    }
 
     #endregion
 

@@ -1,0 +1,18 @@
+// Associer employés et projets selon correspondance de départements requis.
+
+var employees = new List<Employee> {
+    new() { Name = "Anna", Department = "HR" },
+    new() { Name = "Ben", Department = "IT" },
+    new() { Name = "Cara", Department = "Finance" },
+};
+
+var projects = new List<Project> {
+    new() { Title = "Migration", RequiredDepartments = new List<string> { "IT", "Finance" } },
+    new() { Title = "Onboarding", RequiredDepartments = new List<string> { "HR" } },
+};
+
+// Attendu :
+// [
+//    { Title = "Migration", Employees = [ "Ben", "Cara" ] },
+//    { Title = "Onboarding", Employees = [ "Anna" ] }
+// ]

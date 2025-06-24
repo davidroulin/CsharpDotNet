@@ -16,3 +16,7 @@
   </Order>
 </Orders>
 
+
+string path = "exo-linq-6_data.xml";
+XDocument doc = XDocument.Load(path);
+var orders = doc.Root.Elements("Order");

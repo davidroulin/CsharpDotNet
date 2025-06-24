@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 
 partial class Program
 {
@@ -271,14 +272,46 @@ partial class Program
 
     #region Exo 6
 
+    public void ExoLinq6()
+    {
 
+        // À partir d’un document XML, retourner les ID de commandes dont le total d'achats > 1000
 
-    //public void ExoLinqN()
-    //{
+        //<Orders>
+        //    <Order id="1">
+        //		<Item name="Book" price="12.5"/>
+        //		<Item name="Pen" price="1.5"/>
+        //		<Item name="Printer" price="130"/>
+        //    </Order>
+        //    <Order id="2">
+        //		<Item name="Laptop" price="2390"/>
+        //		<Item name="Pen" price="1.5"/>
+        //    </Order>
+        //    <Order id="3">
+        //		<Item name="Printer" price="130" quantity="9"/>
+        //		<Item name="Pen" price="1.5" quantity="200"/>
+        //    </Order>
+        //</Orders>
 
+        string path = "C:\\temp\\exo-linq-6_data.xml";
+        XDocument doc = XDocument.Load(path);
+        //var orders = doc.Root.Elements("Order");
 
+        //var xml = XDocument.Parse(xmlString); ... ne pas oublier arobase+guillemet @"" pour le multi-ligne
 
-    //}
+        var result = doc.Descendants("Order")
+            .Select(order => new {
+                OrderId = (string)order.Attribute("id"),
+                Total = order.Elements("Item").Sum(item => (double)item.Attribute("price") * ((int?)item.Attribute("quantity") ?? 1))
+            })
+            .Where(x => x.Total > 1000)
+            .ToList();
+
+        foreach (var item in result)
+        {
+            Console.WriteLine($"{item}");
+        }
+    }
 
     #endregion
 

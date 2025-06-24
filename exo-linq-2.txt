@@ -1,0 +1,20 @@
+// À partir d'une structure de dossiers :
+
+class Folder {
+    public int Id { get; set; }
+    public int? ParentId { get; set; }
+    public string Name { get; set; }
+}
+
+// Objectif : Trouver tous les descendants (directs et indirects) d’un dossier donné (Id = 1) via LINQ + récursion.
+
+// Data
+
+var folders = new List<Folder> {
+    new() { Id = 1, ParentId = null, Name = "Root" },
+    new() { Id = 2, ParentId = 1, Name = "Sub1" },
+    new() { Id = 3, ParentId = 1, Name = "Sub2" },
+    new() { Id = 4, ParentId = 2, Name = "Sub1.1" },
+    new() { Id = 5, ParentId = 4, Name = "Sub1.1.1" },
+    new() { Id = 6, ParentId = 3, Name = "Sub2.1" },
+};

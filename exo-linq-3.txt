@@ -1,0 +1,18 @@
+// Liste de notes par étudiant et matière.
+
+class Note {
+    public string Student { get; set; }
+    public string Subject { get; set; }
+    public double Grade { get; set; }
+}
+
+// Poids : Math = 2, autres = 1. Calculez les moyennes pondérées et n'affichez que la plus haute et la plus basse.
+
+var notes = new List<Note> {
+    new() { Student = "Alice", Subject = "Maths", Grade = 18 },
+    new() { Student = "Alice", Subject = "Histoire", Grade = 14 },
+    new() { Student = "Bertrand", Subject = "Maths", Grade = 15 },
+    new() { Student = "Bertrand", Subject = "Histoire", Grade = 17 },
+    new() { Student = "Charles", Subject = "Maths", Grade = 10 },
+    new() { Student = "Charles", Subject = "Histoire", Grade = 19 },
+};

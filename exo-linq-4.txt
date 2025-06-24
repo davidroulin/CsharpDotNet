@@ -1,0 +1,7 @@
+// Regrouper des identifiants entiers consécutifs en plages continues.
+
+var ids = new List<int> { 3, 4, 5, 8, 9, 11, 12, 13, 14 };
+
+// Attendu :
+// [ { Start = 3, End = 5 }, { Start = 8, End = 9 }, { Start = 11, End = 14 } ]
+

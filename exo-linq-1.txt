@@ -1,15 +1,5 @@
 
-
-
-On dispose d'une liste de logs d’événements utilisateurs :
-
-Objectif : Trouver les utilisateurs ayant au moins une session dans laquelle il y a plus de 5 événements "ACTION" entre un LOGIN et un LOGOUT.
-
-
-
-
-
-
+// On dispose d'une liste de logs d’événements utilisateurs :
 
 class LogEntry {
     public string UserId { get; set; }
@@ -18,7 +8,7 @@ class LogEntry {
     public string EventType { get; set; } // "LOGIN", "ACTION", "LOGOUT"
 }
 
-
+// Objectif : Trouver les utilisateurs ayant au moins une session dans laquelle il y a plus de 5 événements "ACTION" entre un LOGIN et un LOGOUT.
 
 
 

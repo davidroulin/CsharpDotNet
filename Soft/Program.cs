@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-//Console.WriteLine("Hello, World!");
-
+﻿
 namespace Soft
 {
     class SoftLauncher
@@ -12,12 +10,15 @@ namespace Soft
             Console.WriteLine("Demarrage...");
             Console.WriteLine("");
 
-            IEnumerable<Func<Task<string[]>>> parrallelTasks= LogReader.LoadFolder(dataPath);
-            foreach (var task in parrallelTasks)
-            {
-                string[] lines = await task();
-                Console.WriteLine($"Found {lines.Length} lines");
-            }
+            //IEnumerable<Func<Task<string[]>>> parrallelTasks = LogReader.LoadFolder(dataPath);
+
+            //foreach (var task in parrallelTasks)
+            //{
+            //    string[] lines = await task();
+            //    Console.WriteLine($"Found {lines.Length} lines");
+            //}
+
+            var data = await IPInfo.GetGeoDataAsync("94.104.28.29");
 
             // Garde la console a l'ecran une fois tout fini. Appuyer sur une touche pour fermer.
             Console.WriteLine("");

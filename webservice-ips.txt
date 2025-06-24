@@ -6,6 +6,8 @@ string url = $"https://ipinfo.io/{ip}/geo?token=7e4d3379bfd204"
 
 // Le token 7e4d3379bfd204 est lie au compte training@davidroulin.ch pour info
 
+// 94.104.28.29 = IP de smart coop pour info
+
 // Sans token c'est possible aussi
 //    https://ipinfo.io/94.104.28.29/geo
 // mais limite a 1000 requetes par jour depuis une IP donnee, donc on serait limite pour l'exercice

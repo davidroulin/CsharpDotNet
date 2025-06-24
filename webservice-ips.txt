@@ -1,0 +1,26 @@
+// Web service pour interroger des IP
+
+// https://ipinfo.io/94.104.28.29/geo?token=7e4d3379bfd204
+
+string url = $"https://ipinfo.io/{ip}/geo?token=7e4d3379bfd204"
+
+// Le token 7e4d3379bfd204 est lie au compte training@davidroulin.ch pour info
+
+// Sans token c'est possible aussi
+//    https://ipinfo.io/94.104.28.29/geo
+// mais limite a 1000 requetes par jour depuis une IP donnee, donc on serait limite pour l'exercice
+
+// exemple de resultat
+/*
+{
+	"ip": "94.104.28.29",
+	"city": "Wortegem",
+	"region": "Flanders",
+	"country": "BE",
+	"loc": "50.8536,3.5100",
+	"org": "AS47377 Orange Belgium SA",
+	"postal": "9790",
+	"timezone": "Europe/Brussels",
+	"readme": "https://ipinfo.io/missingauth"
+}
+*/

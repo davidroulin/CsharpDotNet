@@ -14,7 +14,25 @@
 
     static void Main(string[] args)
     {
+        
+        using var cancelSource = new CancellationTokenSource();
+        Console.CancelKeyPress += (object? s, ConsoleCancelEventArgs e) =>
+        {
+            e.Cancel = true;
+            cancelSource.Cancel();
+        };
+
         Console.WriteLine("coucou");
-        Instance.MethodeBloquante(4000);
+
+        //Instance.MethodeBloquante(4000);
+
+        Instance.ExoLinq1();
+        
+        Instance.ExoLinq2();
+
+        Console.WriteLine("");
+        Console.WriteLine("Fini. Appuyer sur une touche pour quitter.");
+        Console.ReadKey();
+
     }
 }

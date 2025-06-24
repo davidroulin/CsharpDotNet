@@ -13,16 +13,20 @@ class LogEntry {
 
 
 var logs = new List<LogEntry> {
-    new() { UserId = "u1", SessionId = "s1", Timestamp = DateTime.Parse("2024-01-01 09:00"), EventType = "LOGIN" },
     new() { UserId = "u1", SessionId = "s1", Timestamp = DateTime.Parse("2024-01-01 09:01"), EventType = "ACTION" },
     new() { UserId = "u1", SessionId = "s1", Timestamp = DateTime.Parse("2024-01-01 09:02"), EventType = "ACTION" },
-    new() { UserId = "u1", SessionId = "s1", Timestamp = DateTime.Parse("2024-01-01 09:03"), EventType = "ACTION" },
-    new() { UserId = "u1", SessionId = "s1", Timestamp = DateTime.Parse("2024-01-01 09:04"), EventType = "ACTION" },
     new() { UserId = "u1", SessionId = "s1", Timestamp = DateTime.Parse("2024-01-01 09:05"), EventType = "ACTION" },
     new() { UserId = "u1", SessionId = "s1", Timestamp = DateTime.Parse("2024-01-01 09:06"), EventType = "ACTION" },
     new() { UserId = "u1", SessionId = "s1", Timestamp = DateTime.Parse("2024-01-01 09:10"), EventType = "LOGOUT" },
 
+    new() { UserId = "u1", SessionId = "s1", Timestamp = DateTime.Parse("2024-01-01 09:00"), EventType = "LOGIN" },
+
     new() { UserId = "u2", SessionId = "s2", Timestamp = DateTime.Parse("2024-01-01 10:00"), EventType = "LOGIN" },
-    new() { UserId = "u2", SessionId = "s2", Timestamp = DateTime.Parse("2024-01-01 10:01"), EventType = "ACTION" },
     new() { UserId = "u2", SessionId = "s2", Timestamp = DateTime.Parse("2024-01-01 10:05"), EventType = "LOGOUT" },
+
+    new() { UserId = "u2", SessionId = "s2", Timestamp = DateTime.Parse("2024-01-01 10:01"), EventType = "ACTION" },
+
+    new() { UserId = "u1", SessionId = "s1", Timestamp = DateTime.Parse("2024-01-01 09:03"), EventType = "ACTION" },
+    new() { UserId = "u1", SessionId = "s1", Timestamp = DateTime.Parse("2024-01-01 09:04"), EventType = "ACTION" },
+
 };

@@ -101,6 +101,10 @@ partial class Program
     public void ExoLinq2()
     {
 
+        // À partir d'une structure de dossiers :
+
+        // Objectif : Trouver tous les descendants (directs et indirects) d’un dossier donné (Id = 1) via LINQ + récursion.
+
         var folders = new List<Folder> {
             new() { Id = 1, ParentId = null, Name = "Root" },
             new() { Id = 2, ParentId = 1, Name = "Sub1" },
@@ -142,6 +146,10 @@ partial class Program
     public void ExoLinq3()
     {
 
+        // Liste de notes par étudiant et matière.
+
+        // Poids : Math = 2, autres = 1. Calculez les moyennes pondérées et n'affichez que la plus haute et la plus basse.
+
         var notes = new List<Note> {
             new() { Student = "Alice", Subject = "Maths", Grade = 19 },
             new() { Student = "Alice", Subject = "Histoire", Grade = 14 },
@@ -179,33 +187,89 @@ partial class Program
 
     #endregion
 
-    #region Exo N...
+    #region Exo 4
 
+    public void ExoLinq4()
+    {
 
+        // Regrouper des identifiants entiers consécutifs en plages continues.
 
-    //public void ExoLinqN()
-    //{
+        // Attendu :
+        // [ { Start = 3, End = 5 }, { Start = 8, End = 9 }, { Start = 11, End = 14 } ]
 
+        var ids = new List<int> { 3, 4, 5, 8, 9, 11, 12, 13, 14 };
 
+        var result = ids
+            .OrderBy(i => i)
+            .Select((val, idx) => new { val, grp = val - idx })
+            .GroupBy(x => x.grp)
+            .Select(g => new { Start = g.First().val, End = g.Last().val })
+            .ToList();
 
-    //}
+        foreach (var item in result)
+        {
+            Console.WriteLine(item);
+        }
+
+    }
 
     #endregion
 
-    #region Exo N...
+    #region Exo 5
 
+    class Employee
+    {
+        public string Name { get; set; }
+        public string Department { get; set; }
+    }
 
+    class Project
+    {
+        public string Title { get; set; }
+        public List<string> RequiredDepartments { get; set; }
+    }
 
-    //public void ExoLinqN()
-    //{
+    public void ExoLinq5()
+    {
 
+        // Associer employés et projets selon correspondance de départements requis.
 
+        var employees = new List<Employee> {
+            new() { Name = "Anna", Department = "HR" },
+            new() { Name = "Ben", Department = "IT" },
+            new() { Name = "Cara", Department = "Finance" },
+        };
 
-    //}
+        var projects = new List<Project> {
+            new() { Title = "Migration", RequiredDepartments = new List<string> { "IT", "Finance" } },
+            new() { Title = "Onboarding", RequiredDepartments = new List<string> { "HR" } },
+        };
+
+        // Attendu :
+        // [
+        //    { Title = "Migration", Employees = [ "Ben", "Cara" ] },
+        //    { Title = "Onboarding", Employees = [ "Anna" ] }
+        // ]
+
+        var result = projects
+            .Select(p => new {
+                p.Title,
+                Employees = employees
+                    .Where(e => p.RequiredDepartments.Contains(e.Department))
+                    .Select(e => e.Name)
+                    .ToList()
+            })
+            .ToList();
+
+        foreach (var item in result)
+        {
+            Console.WriteLine($"Title: {item.Title}, Employees: {string.Join(",", item.Employees)}");
+        }
+    }
 
     #endregion
 
-    #region Exo N...
+    #region Exo 6
 
 
 

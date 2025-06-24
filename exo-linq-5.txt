@@ -1,5 +1,18 @@
 // Associer employés et projets selon correspondance de départements requis.
 
+class Employee
+{
+    public string Name { get; set; }
+    public string Department { get; set; }
+}
+
+class Project
+{
+    public string Title { get; set; }
+    public List<string> RequiredDepartments { get; set; }
+}
+
+
 var employees = new List<Employee> {
     new() { Name = "Anna", Department = "HR" },
     new() { Name = "Ben", Department = "IT" },

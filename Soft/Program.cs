@@ -7,20 +7,16 @@ namespace Soft
     {
         static string dataPath = "C:\\temp\\data";
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Console.WriteLine("Demarrage...");
             Console.WriteLine("");
 
-            foreach (var file in Directory.GetFiles(dataPath))
+            IEnumerable<Func<Task<string[]>>> parrallelTasks= LogReader.LoadFolder(dataPath);
+            foreach (var task in parrallelTasks)
             {
-                Console.WriteLine($"Ouverture du fichier {file}");
-                foreach (var line in File.ReadAllLines(file))
-                {
-                    //Console.WriteLine($"Found line {line}");
-                    Console.Write(".");
-                }
-                Console.WriteLine(" EOF");
+                string[] lines = await task();
+                Console.WriteLine($"Found {lines.Length} lines");
             }
 
             // Garde la console a l'ecran une fois tout fini. Appuyer sur une touche pour fermer.
